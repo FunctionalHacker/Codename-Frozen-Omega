@@ -1,5 +1,6 @@
 package CodenameFrozenOmega;
 import java.awt.*;
+
 import java.awt.event.*;
 import javax.swing.JPanel;
 
@@ -59,7 +60,7 @@ public class simPanel extends JPanel implements Runnable{
 	
 	private void simUpdate(){
 		if (running && sim != null) {
-			//update game state
+			//update simulation state
 			
 		}
 	}

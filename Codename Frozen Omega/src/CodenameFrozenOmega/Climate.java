@@ -25,5 +25,4 @@ public class Climate {
 	public void setHumidity(int humidity) {
 		this.humidity = humidity;
 	}
-
 }

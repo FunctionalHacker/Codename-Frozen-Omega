@@ -1,5 +1,5 @@
 package CodenameFrozenOmega;
 
-public class Plant {
+public class Plant extends Organism {
 
 }

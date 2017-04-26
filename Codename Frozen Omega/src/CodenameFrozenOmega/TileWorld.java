@@ -9,7 +9,7 @@ import javax.swing.text.html.HTMLDocument.HTMLReader.BlockAction;
 public class TileWorld {
 	private Rectangle[] blocks;
 	private Image[] blockImg;
-	private final int arrayNum = 121;
+	private final int arrayNum = 120;
 	private BufferedImage tropic;
 	private int ix, iy;
 	public TileWorld(){

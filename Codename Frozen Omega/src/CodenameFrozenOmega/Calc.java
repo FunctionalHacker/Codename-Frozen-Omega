@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package projectfo;
+package CodenameFrozenOmega;
 
 import java.util.Random;
 

@@ -6,7 +6,7 @@ public class Screenmain extends JFrame{
 	
 	public Screenmain(){
 		simpanel=new simPanel();
-		setSize(500, 500);
+		setSize(1000, 1000);
 		setResizable(false);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

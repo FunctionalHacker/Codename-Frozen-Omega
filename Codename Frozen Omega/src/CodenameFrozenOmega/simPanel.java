@@ -1,6 +1,5 @@
 package CodenameFrozenOmega;
 import java.awt.*;
-
 import java.awt.event.*;
 import javax.swing.JPanel;
 
@@ -20,14 +19,18 @@ public class simPanel extends JPanel implements Runnable{
 	private Image dbImage;
 	private Graphics dbg;
 	//JPanel variables
-	static final int GWIDTH = 500, GHEIGHT = 400;
+	static final int GWIDTH = 1000, GHEIGHT = 1000;
 	static final Dimension simDim = new Dimension(GWIDTH, GHEIGHT);
 	//Simulator variables
 	private Thread sim;
 	private volatile boolean running = false;
 	
+	//Simulation objects
+	TileWorld world;
+	
 	//Constructor
 	public simPanel(){
+		world = new TileWorld();
 		setPreferredSize(simDim);
 		setBackground(Color.white);
 		setFocusable(true);
@@ -86,8 +89,7 @@ public class simPanel extends JPanel implements Runnable{
 	}
 	
 	public void Draw(Graphics g){
-	g.setColor(Color.cyan);
-	g.drawString("Miau~", 100, 100);
+	world.draw(g);
 		
 	}
 	

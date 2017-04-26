@@ -1,5 +1,6 @@
 package CodenameFrozenOmega;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 import javax.security.auth.x500.X500Principal;
 import javax.swing.ImageIcon;
@@ -9,13 +10,24 @@ public class TileWorld {
 	private Rectangle[] blocks;
 	private Image[] blockImg;
 	private final int arrayNum = 121;
-	private Image tropic;
+	private BufferedImage tropic;
 	private int ix, iy;
 	public TileWorld(){
-		tropic = new ImageIcon(this.getClass().getResource("/CodenameFrozenOmega/Images/tropical.png")).getImage();
-		blocks = new Rectangle[121];
-		blockImg = new Image[121];
+		//Creating the images
+		tropic = new BufferedImage(90, 90, BufferedImage.TYPE_INT_RGB);
+		int rgb=new Color(0,255,255).getRGB();
+		for(int width=0; width < tropic.getWidth(); width++)
+		{
+		    for(int height=0; height < tropic.getHeight(); height++)
+		    {
+		          Color temp = new Color(0, 255, 255);
+		          tropic.setRGB(width, height, temp.getRGB());
+		    }
+		}
+		blocks = new Rectangle[120];
+		blockImg = new Image[120];
 	loadArrays();
+	//Loading the arrays
 	}
 	private void loadArrays(){
 		for (int i = 0; i < arrayNum; i++) {
@@ -23,13 +35,14 @@ public class TileWorld {
 				ix = 0;
 				iy += 90;
 			}
-			if (i >= 0 && i < 1000) {
+			if (i >= 0 && i < 500) {
 				blockImg[i]=tropic;
 				blocks[i] = new Rectangle(ix,iy,90,90);
 			}
 		ix+=90;
 		}
 	}
+	//Drawing the tilemap
 	public void draw(Graphics g){
 		for (int i = 0; i < arrayNum; i++) {
 			g.drawImage(blockImg[i],blocks[i].x, blocks[i].y, null);

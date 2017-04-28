@@ -2,6 +2,15 @@ package CodenameFrozenOmega;
 
 public class Organism {
 	
+	public Organism(int population, int preferredClimate, int id, int location, String species) {
+		super();
+		this.population = population;
+		this.preferredClimate = preferredClimate;
+		this.id = id;
+		this.location = location;
+		this.species = species;
+	}
+	
 	int population, preferredClimate, id, location;
 	String species;
 	public int getPopulation() {
@@ -25,6 +34,7 @@ public class Organism {
 	public int getLocation() {
 		return location;
 	}
+
 	public void setLocation(int location) {
 		this.location = location;
 	}

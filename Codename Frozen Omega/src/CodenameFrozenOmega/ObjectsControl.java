@@ -79,4 +79,25 @@ public class ObjectsControl {
 		}
 		return amount;
 	}
+	public int listDiseasesInTile(int tile){
+		int amount = 0;
+		for (int i = 0; i<disease.size(); i++){
+			if(disease.get(i).location == tile){
+				amount = amount + 1;
+			}
+		}
+		return amount;
+	}
+	public int listPlantsInTile(int tile){
+		int amount = 0;
+		for (int i = 0; i<plant.size(); i++){
+			if(plant.get(i).location == tile){
+				amount = amount + 1;
+			}
+		}
+		return amount;
+	}
+	public void killObject(int object){
+		
+	}
 }

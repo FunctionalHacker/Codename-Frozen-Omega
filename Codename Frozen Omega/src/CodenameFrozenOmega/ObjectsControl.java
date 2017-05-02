@@ -41,23 +41,28 @@ public class ObjectsControl {
 	}
 
 	public void createObjects(String className,String species,int amount,int id,
-								int preferredTemperature,int location, int lifespan, double age, int foodChainPosition ) {
+								int preferredTemperature,int location, int lifespan,
+								double age, int foodChainPosition ) {
 		
 		if(className == "Carnivore"){
 			for(int i=1; i<=amount; i++){
-				carnivore.add(new Carnivore(preferredTemperature, id, location, lifespan, age, species, foodChainPosition));
+				carnivore.add(new Carnivore(preferredTemperature, id, location,
+											lifespan, age, species, foodChainPosition));
 			}
 		}else if(className == "Herbivore"){
 			for(int i=1; i<=amount; i++){
-				herbivore.add(new Herbivore(preferredTemperature, id, location, lifespan, age, species, foodChainPosition));
+				herbivore.add(new Herbivore(preferredTemperature, id, location,
+											lifespan, age, species, foodChainPosition));
 			}
 		}else if(className == "Plant"){
 			for(int i=1; i<=amount; i++){
-				plant.add(new Plant(preferredTemperature, id, location, lifespan, age, species));
+				plant.add(new Plant(preferredTemperature, id, location,
+									lifespan, age, species));
 			}
 		}else if(className == "Disease"){
 			for(int i=1; i<=amount; i++){
-				disease.add(new Disease(preferredTemperature, id, location, lifespan, age, species));
+				disease.add(new Disease(preferredTemperature, id, location,
+										lifespan, age, species));
 			}
 		}
 	}

@@ -6,7 +6,8 @@ public class Organism {
 	boolean healthy = true;
 	String species;
 	
-	public Organism(int preferredTemperature, int id, int location, int lifespan, double age, String species) {
+	public Organism(int preferredTemperature, int id, int location,
+					int lifespan, double age, String species) {
 		super();
 		this.preferredTemperature = preferredTemperature;
 		this.id = id;

@@ -6,7 +6,9 @@ public class FrozenOmega {
 	ObjectsControl objectscontrol = new ObjectsControl();
 	objectscontrol.createObjects("Herbivore", "koala", 
 								50, 123, 22, 32, 25, 0, 0);
-	
 	System.out.println("Herbivores in tile 32: "+objectscontrol.listHerbivoresInTile(32));
+	System.out.println(objectscontrol.getHerbivore().get(0).age);
+	objectscontrol.timeToExpire();
+	objectscontrol.setHerbivore().set;
 	}
 }

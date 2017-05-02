@@ -5,9 +5,8 @@ public class Organism {
 	double age;
 	boolean healthy = true;
 	String species;
-	
-	public Organism(int preferredTemperature, int id, int location,
-					int lifespan, double age, String species) {
+
+	public Organism(int preferredTemperature, int id, int location, String species) {
 		super();
 		this.preferredTemperature = preferredTemperature;
 		this.id = id;

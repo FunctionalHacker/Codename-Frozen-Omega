@@ -41,23 +41,23 @@ public class ObjectsControl {
 	}
 
 	public void createObjects(String className,String species,int amount,int id,
-								int preferredClimate,int location, int foodChainPosition ) {
+								int preferredTemperature,int location, int lifespan, double age, int foodChainPosition ) {
 		
 		if(className == "Carnivore"){
 			for(int i=1; i<=amount; i++){
-				carnivore.add(new Carnivore(preferredClimate, id, location, species, foodChainPosition));
+				carnivore.add(new Carnivore(preferredTemperature, id, location, lifespan, age, species, foodChainPosition));
 			}
 		}else if(className == "Herbivore"){
 			for(int i=1; i<=amount; i++){
-				herbivore.add(new Herbivore(preferredClimate, id, location, species, foodChainPosition));
+				herbivore.add(new Herbivore(preferredTemperature, id, location, lifespan, age, species, foodChainPosition));
 			}
 		}else if(className == "Plant"){
 			for(int i=1; i<=amount; i++){
-				plant.add(new Plant(preferredClimate, id, location, species));
+				plant.add(new Plant(preferredTemperature, id, location, lifespan, age, species));
 			}
 		}else if(className == "Disease"){
 			for(int i=1; i<=amount; i++){
-				disease.add(new Disease(preferredClimate, id, location, species));
+				disease.add(new Disease(preferredTemperature, id, location, lifespan, age, species));
 			}
 		}
 	}
@@ -97,7 +97,22 @@ public class ObjectsControl {
 		}
 		return amount;
 	}
-	public void killObject(int object){
-		
+	public void timeToExpire(){
+		for (int i = 0; i<herbivore.size(); i++){
+			if(plant.get(i).age >= plant.get(i).lifespan){
+				plant.set(i,null);
+			}
+		}
+		for (int i = 0; i<carnivore.size(); i++){
+			if(carnivore.get(i).age >= carnivore.get(i).lifespan){
+				carnivore.set(i,null);
+			}
+			
+		}
+		for (int i = 0; i<plant.size(); i++){
+			if(herbivore.get(i).age >= herbivore.get(i).lifespan){
+				herbivore.set(i,null);
+			}
+		}
 	}
 }

@@ -1,9 +1,6 @@
 package CodenameFrozenOmega;
 
 public class Organism {
-	
-
-	
 	int preferredClimate, id, location;
 	String species;
 	

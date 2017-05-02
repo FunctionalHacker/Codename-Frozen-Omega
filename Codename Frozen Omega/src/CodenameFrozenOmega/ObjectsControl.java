@@ -44,12 +44,39 @@ public class ObjectsControl {
 								int preferredClimate,int location, int foodChainPosition ) {
 		
 		if(className == "Carnivore"){
-			for(int i=0; i<=amount; i++){
+			for(int i=1; i<=amount; i++){
 				carnivore.add(new Carnivore(preferredClimate, id, location, species, foodChainPosition));
 			}
-		}if(className == "Herbivore"){
+		}else if(className == "Herbivore"){
 			for(int i=1; i<=amount; i++){
+				herbivore.add(new Herbivore(preferredClimate, id, location, species, foodChainPosition));
+			}
+		}else if(className == "Plant"){
+			for(int i=1; i<=amount; i++){
+				plant.add(new Plant(preferredClimate, id, location, species));
+			}
+		}else if(className == "Disease"){
+			for(int i=1; i<=amount; i++){
+				disease.add(new Disease(preferredClimate, id, location, species));
 			}
 		}
+	}
+	public int listHerbivoresInTile(int tile){
+		int amount = 0;
+		for (int i = 0; i<herbivore.size(); i++){
+			if(herbivore.get(i).location == tile){
+				amount = amount + 1;
+			}
+		}
+		return amount;
+	}
+	public int listCarnivoresInTile(int tile){
+		int amount = 0;
+		for (int i = 0; i<carnivore.size(); i++){
+			if(carnivore.get(i).location == tile){
+				amount = amount + 1;
+			}
+		}
+		return amount;
 	}
 }

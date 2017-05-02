@@ -9,10 +9,6 @@ package CodenameFrozenOmega;
 import java.util.Random;
 import java.math.*;
 
-/**
- *
- * @author ancalego
- */
 public class Calc {
     
   public double setLife(int id){

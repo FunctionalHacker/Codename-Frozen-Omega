@@ -1,9 +1,28 @@
 package CodenameFrozenOmega;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Tile {
 	int herbivores, carnivores, diseases, plants, location;
 	float temperature;
 	
+	public int getLocation() {
+		return location;
+	}
+
+	public void setLocation(int location) {
+		this.location = location;
+	}
+
+	public float getTemperature() {
+		return temperature;
+	}
+
+	public void setTemperature(float temperature) {
+		this.temperature = temperature;
+	}
+
 	public Tile(int location, float temperature) {
 		super();
 		this.location = location;
@@ -29,4 +48,14 @@ public class Tile {
 		}
 		return 0;
 	}
+	private static int randtemperature(int min, int max) {
+		Random rn= new Random();
+		int randomValue = min + (max - min) * rn.nextInt();
+		return randomValue;
+	    }
+		public float settemperature(){
+			float temperature =randtemperature(10,30);
+			temperature=  (float) (temperature+Math.random());
+			return Math.round(temperature);
+			}
 }

@@ -104,26 +104,36 @@ public class Calc {
         return age;
        
      }
-     public  Double sethabitability(){
-                    if (organism.preferredTemperature-10 < organism.preferredTemperature || 
-                            organism.preferredTemperature+10>organism.preferredTemperature){
-                        habitability =2;
-        } else if (organism.preferredTemperature-2 < organism.preferredTemperature || 
-                            organism.preferredTemperature+2>organism.preferredTemperature){
-              habitability =1;
-        } else if ((organism.preferredTemperature -15< organism.preferredTemperature || 
-                            organism.preferredTemperature+15>organism.preferredTemperature)){
-                 habitability =0;
-     }
-     return habitability;
-     }
-     public void timeToExpire(){
-         
-         if (age==lifespan){
-             
-         }
-     }
- 
-}
+     public  void setHabitability(float temperature, Organism organism){
+                    if (temperature-2 < organism.preferredTemperature && 
+                        temperature+2 > organism.preferredTemperature){
+                    	organism.habitability=2;
+                    }
+                    else if (temperature-10 < organism.preferredTemperature && 
+                             temperature+10 > organism.preferredTemperature){
+                    	organism.habitability=1;
+                    }
+                    else{
+                    	organism.habitability=0;
+                    }
+      }
 
+//saalis ja saalistajien suhteen laskua lisäilyä ja poistoa lotka-Volterra equation
+public int Predatorformula(ObjectsControl control, Calc calc){
+    
+    Tile tile=null;
+//any real numbers
+    double a=0.1, b=0.02, c=0.4, d=0.02;
 
+    
+  for (int i = 1; i<=tile.gettilelocation(); i++){
+               int predators = control.listCarnivoresInTile(i);
+               int  prey = control.listHerbivoresInTile(i);
+                double newprey = (a * prey)-(b*prey*predators);
+                double newpredator = (prey*predators*d)-(c*predators);
+                control.createObjects("Carnivore", "predator", (int)(newpredator-predators), 1, organism.preferredTemperature,i,(int)calc.setLife(1), 0, 1);
+                control.createObjects("Herbivore", "prey", (int)(newprey-prey), 2, organism.preferredTemperature,i, (int)calc.setLife(2), 0, 2);
+  }    
+    return 
+
+            }

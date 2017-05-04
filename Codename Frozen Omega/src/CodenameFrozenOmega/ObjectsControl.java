@@ -42,27 +42,27 @@ public class ObjectsControl {
 
 	public void createObjects(String className,String species,int amount,int id,
 								int preferredTemperature,int location, int lifespan,
-								double age, int foodChainPosition ) {
+								double age, int foodChainPosition, int habitability, boolean healthy) {
 		
 		if(className == "Carnivore"){
 			for(int i=1; i<=amount; i++){
-				carnivore.add(new Carnivore(preferredTemperature, id, location,
-											lifespan, age, species, foodChainPosition));
+				carnivore.add(new Carnivore(preferredTemperature, id, location, lifespan, age,
+											species, foodChainPosition, habitability, healthy));
 			}
 		}else if(className == "Herbivore"){
 			for(int i=1; i<=amount; i++){
-				herbivore.add(new Herbivore(preferredTemperature, id, location,
-											lifespan, age, species, foodChainPosition));
+				herbivore.add(new Herbivore(preferredTemperature, id, location, lifespan, age,
+											species, foodChainPosition, habitability, healthy));
 			}
 		}else if(className == "Plant"){
 			for(int i=1; i<=amount; i++){
-				plant.add(new Plant(preferredTemperature, id, location,
-									lifespan, age, species));
-			}
-		}else if(className == "Disease"){
+				plant.add(new Plant(preferredTemperature, id, location, lifespan, habitability,
+									age, healthy, species));
+				}
+			}else if(className == "Disease"){
 			for(int i=1; i<=amount; i++){
-				disease.add(new Disease(preferredTemperature, id, location,
-										lifespan, age, species));
+				disease.add(new Disease(preferredTemperature, id, location, lifespan, age,
+										habitability, healthy, species));
 			}
 		}
 	}
@@ -120,4 +120,21 @@ public class ObjectsControl {
 			}
 		}
 	}
+	
+	public void setHabitabilities(Calc calc, Tile tile){
+		calc.setHabitability(tiles.get(objectscontrol.getHerbivore().get(0).location-1).temperature,
+				                       objectscontrol.getHerbivore().get(0));
+	}
+//	public  double grow(){
+//        
+//        if (habitability >1){
+//            age = age + 0.75;
+//
+//    } else if (habitability ==1){
+//        age = age +1;
+//    } else if (habitability <1){
+//        age = age +2;
+//    }
+//       return age;
+//    }
 }

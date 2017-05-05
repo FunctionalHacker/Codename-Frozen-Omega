@@ -122,9 +122,19 @@ public class ObjectsControl {
 		}
 	}
 	
-	public void setHabitabilities(Calc calc, Tile tile){
-		calc.setHabitability(tiles.get(objectscontrol.getHerbivore().get(0).location-1).temperature,
-				                       objectscontrol.getHerbivore().get(0));
+	public void setHabitabilities(Calc calc,ObjectsControl control, ArrayList<Tile> tiles){
+//		HERBIVORES	
+		for(int i = 0; i<herbivore.size(); i++){
+			calc.setHabitability(tiles.get(control.getHerbivore().get(i).location).getTemperature(),control.getHerbivore().get(i));
+		}
+//		CARNIVORES
+		for(int i = 0; i<carnivore.size(); i++){
+			calc.setHabitability(tiles.get(control.getCarnivore().get(i).location).getTemperature(),control.getCarnivore().get(i));
+		}
+//		PLANTS
+		for(int i = 0; i<plant.size(); i++){
+			calc.setHabitability(tiles.get(control.getPlant().get(i).location).getTemperature(),control.getPlant().get(i));
+		}
 	}
 //	public  double grow(){
 //        

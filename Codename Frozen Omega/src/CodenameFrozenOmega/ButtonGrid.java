@@ -9,10 +9,10 @@ import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 public class ButtonGrid extends JPanel {
-   private static final int ROW_COUNT = 11;
+   private static final int ROW_COUNT = 2;
    private static final int W = 60;
    private static final int H = W;
-   private final int tileID = 120;
+   private final int tileID =4;
    private static final Dimension PREF_SIZE = new Dimension(W, H);
    protected static final Color SELECTION_COLOR = Color.pink;
    private JPanel selectedPanel;
@@ -47,11 +47,13 @@ public class ButtonGrid extends JPanel {
             		selectedPanel.repaint();
         		
             }
+            //Do these when tile clicked
             selectedPanel = panel;
             selectedPanel.setBackground(SELECTION_COLOR);
             selectedPanel.add(new JLabel(selectedPanel.getName()));
             selectedPanel.revalidate();
             selectedPanel.repaint();
+            System.out.println(selectedPanel.getName());
          }
       });
    }

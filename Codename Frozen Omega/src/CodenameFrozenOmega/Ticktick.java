@@ -9,16 +9,16 @@ public class Ticktick {
 
 		    @Override
 		    public void onTick(float deltaTime) {
+		    	
 		    	tickcount++;
-		    	System.out.println(tickcount);
+		    	//System.out.println(tickcount);
+		    	
 		    }
 		});
 
 		while (true) {
 		    ticker.update();
+		    
 		}
-	}
-	public int getTicks(){
-		return tickcount;
 	}
 }

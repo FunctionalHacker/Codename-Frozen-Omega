@@ -134,6 +134,6 @@ public int Predatorformula(ObjectsControl control, Calc calc){
                 control.createObjects("Carnivore", "predator", (int)(newpredator-predators), 1, organism.preferredTemperature,i,(int)calc.setLife(1), 0, 1);
                 control.createObjects("Herbivore", "prey", (int)(newprey-prey), 2, organism.preferredTemperature,i, (int)calc.setLife(2), 0, 2);
   }    
-    return 
 
             }
+}

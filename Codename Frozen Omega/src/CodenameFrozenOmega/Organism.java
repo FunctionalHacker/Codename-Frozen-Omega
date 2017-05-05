@@ -1,13 +1,13 @@
 package CodenameFrozenOmega;
 
 public class Organism {
-	int preferredTemperature, id, location, lifespan, habitability;
+	int preferredTemperature, id, location, lifespan, habitability, birthTick;
 	double age;
 	boolean healthy = true;
 	String species;
 
 	public Organism(int preferredTemperature, int id, int location, int habitability,
-					String species, double age, int lifespan, boolean healthy) {
+					String species, double age, int birthTick, int lifespan, boolean healthy) {
 		super();
 		this.preferredTemperature = preferredTemperature;
 		this.id = id;

@@ -15,8 +15,8 @@ import java.math.*;
  */
 
 public class Calc {
-    int lifespan = 0;
-    double age =0;
+	double lifespan;
+    double age;
      double habitability;
      public Climate climate;
      public Organism organism;
@@ -117,8 +117,24 @@ public class Calc {
                     	organism.habitability=0;
                     }
       }
+     public void setAge(double age, Organism organism){
+    	 age++;
+    	 lifespan=organism.lifespan;
+    	 habitability=organism.habitability;
+    	 organism.age=age;
+    	 if (habitability>1) { 	        
+    	     organism.lifespan=lifespan*1.00001;
+    	    } else if (habitability ==1){
+    	        organism.lifespan=lifespan*0.000099;
+    	    } else if (habitability <1){
+    	        organism.lifespan=lifespan*0.00098;
+    	    }
+    	    
+    	 }
+		
 
 //saalis ja saalistajien suhteen laskua lisäilyä ja poistoa lotka-Volterra equation
+//what?
 public int Predatorformula(ObjectsControl control, Calc calc){
     
     Tile tile=null;

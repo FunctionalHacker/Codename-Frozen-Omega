@@ -25,8 +25,8 @@ public class Ticktick {
 		    		Calc calc = new Calc();
 		    		ObjectsControl control = new ObjectsControl();
 		    		
-		    		control.createObjects("Herbivore", "Koala", 50, 2, 21, 1, 20, 0, 0, 0,0, true);
-		    		control.createObjects("Carnivore", "puUma", 120, 1, 12, 0, 0, 0, 1, 0, 0, true);
+		    		control.createObjects("Herbivore", "Koala", 50, 2, 21, 1, 20, 0, 0, 0,true);
+		    		control.createObjects("Carnivore", "puUma", 120, 1, 12, 0, 0, 0, 1, 0, true);
 		    		for(int i=0; i<=4; i++){
 		    			tiles.add(new Tile(i, 21));
 		    		}

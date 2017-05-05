@@ -9,9 +9,7 @@ public class Ticktick {
 
 
 		ticker.addTickListener(new TickListener() {
-<<<<<<< HEAD
-	
-=======
+			
 			ArrayList<Tile> tiles = new ArrayList<Tile>();
 			public ArrayList<Tile> getTile() {
 				return tiles;
@@ -21,16 +19,8 @@ public class Ticktick {
 				this.tiles = tiles;
 			}
 
->>>>>>> refs/remotes/origin/master
 		    @Override
 		    public void onTick(float deltaTime) {
-<<<<<<< HEAD
-		    	if (tickcount==5){
-		    	Listening listen=new Listening();
-		    	ticker.addTickListener(listen);
-		    	}
-		    	System.out.println("Simtick:"+tickcount);
-=======
 		    	if(tickcount == 0){
 		    		Calc calc = new Calc();
 		    		ObjectsControl control = new ObjectsControl();
@@ -44,7 +34,6 @@ public class Ticktick {
 		    		System.out.println("Puuman habiliteetti: "+control.getCarnivore().get(0).habitability);
 		    		System.out.println("Koalan habiliteetti: "+control.getHerbivore().get(0).habitability);
 		    	}
->>>>>>> refs/remotes/origin/master
 		    	tickcount++;
 
 		    	

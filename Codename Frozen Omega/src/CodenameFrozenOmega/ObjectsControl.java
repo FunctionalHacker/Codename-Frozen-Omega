@@ -1,21 +1,4 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @Kaikuh
- Sign out
- Unwatch 2
-  Unstar 2
-  Fork 0 ReekyMarko/Codename-Frozen-Omega
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs
-Branch: master Find file Copy pathCodename-Frozen-Omega/Codename Frozen Omega/src/CodenameFrozenOmega/ObjectsControl.java
-07572f8  19 hours ago
-@ReekyMarko ReekyMarko A shitload of work
-1 contributor
-RawBlameHistory    
-140 lines (126 sloc)  3.61 KB
+
 package CodenameFrozenOmega;
 
 import java.util.ArrayList;
@@ -156,5 +139,3 @@ public class ObjectsControl {
 //       return age;
 //    }
 }
-Contact GitHub API Training Shop Blog About
-© 2017 GitHub, Inc. Terms Privacy Security Status Help

@@ -2,10 +2,8 @@ package CodenameFrozenOmega;
 
 public class Herbivore extends Animal {
 
-	protected Herbivore(int population, int preferredClimate, int id, int location, String species,
-			int foodChainPosition) {
-		super(population, preferredClimate, id, location, species, foodChainPosition);
-		// TODO Auto-generated constructor stub
+	protected Herbivore(int preferredTemperature, int id, int location, int lifespan, double age, String species,
+			int foodChainPosition, int habitability, boolean healthy) {
+		super(preferredTemperature, id, location, lifespan, habitability, age, species, foodChainPosition, healthy);
 	}
-
 }

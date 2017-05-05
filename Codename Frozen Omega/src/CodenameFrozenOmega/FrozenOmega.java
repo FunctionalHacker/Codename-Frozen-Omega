@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class FrozenOmega {
 	public static void main(String[] args) {
 	Simulator.boot();	
-		
+	//The main loop is the onTick method in Ticktick class
 		
 		
 		

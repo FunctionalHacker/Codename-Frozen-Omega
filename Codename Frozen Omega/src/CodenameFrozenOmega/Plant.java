@@ -2,9 +2,9 @@ package CodenameFrozenOmega;
 
 public class Plant extends Organism {
 
-	public Plant(int preferredTemperature, int id, int location, int lifespan, int habitability,
+	public Plant(int preferredTemperature, int id, int location, double lifespan, int habitability,
 				double age, boolean healthy, int birthTick, String species) {
-		super(preferredTemperature, id, location, habitability, species, age, lifespan, habitability, healthy);
+		super(preferredTemperature, id, location, habitability, species, age, birthTick, lifespan, healthy);
 		// TODO Auto-generated constructor stub
 	}
 

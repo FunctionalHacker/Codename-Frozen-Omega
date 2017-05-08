@@ -53,7 +53,7 @@ public class ButtonGrid extends JPanel {
             selectedPanel.add(new JLabel(selectedPanel.getName()));
             selectedPanel.revalidate();
             selectedPanel.repaint();
-            System.out.println(selectedPanel.getName());
+            System.out.println("You have just clicked the tile number "+selectedPanel.getName()+"!");
          }
       });
    }

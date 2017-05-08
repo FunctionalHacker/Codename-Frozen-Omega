@@ -6,6 +6,7 @@
 
 package CodenameFrozenOmega;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.math.*;
         
@@ -15,8 +16,8 @@ import java.math.*;
  */
 
 public class Calc {
-    int lifespan = 0;
-    double age =0;
+	double lifespan;
+    double age;
      double habitability;
      public Climate climate;
      public Organism organism;
@@ -104,6 +105,22 @@ public class Calc {
         return age;
        
      }
+     public int getHabitability(int location, Organism organism, ArrayList<Tile> tiles){
+    	 float temperature=tiles.get(location).getTemperature();
+    	 int nexthabitability;
+    	 if (temperature-2 < organism.preferredTemperature && 
+                 temperature+2 > organism.preferredTemperature){
+    		 nexthabitability=2;
+             }
+             else if (temperature-10 < organism.preferredTemperature && 
+                      temperature+10 > organism.preferredTemperature){
+             	nexthabitability=1;
+             }
+             else{
+             	nexthabitability=0;
+             }
+    	 return nexthabitability;
+     }
      public  void setHabitability(float temperature, Organism organism){
                     if (temperature-2 < organism.preferredTemperature && 
                         temperature+2 > organism.preferredTemperature){
@@ -117,8 +134,27 @@ public class Calc {
                     	organism.habitability=0;
                     }
       }
+     public void setLocation(int location, Organism organism){
+    	 organism.location=location;
+     }
+     public void setAge(double age, Organism organism){
+    	 age++;
+    	 lifespan=organism.lifespan;
+    	 habitability=organism.habitability;
+    	 organism.age=age;
+    	 if (habitability>1) { 	        
+    	     organism.lifespan=lifespan*1.00001;
+    	    } else if (habitability ==1){
+    	        organism.lifespan=lifespan*0.000099;
+    	    } else if (habitability <1){
+    	        organism.lifespan=lifespan*0.00098;
+    	    }
+    	    
+    	 }
+		
 
 //saalis ja saalistajien suhteen laskua lisäilyä ja poistoa lotka-Volterra equation
+//what?
 public int Predatorformula(ObjectsControl control, Calc calc){
     
     Tile tile=null;

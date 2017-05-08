@@ -3,7 +3,7 @@ package CodenameFrozenOmega;
 
 import java.util.ArrayList;
 
-public class ObjectsControl {
+public class ObjectsControl{
 	ArrayList<Carnivore> carnivore = new ArrayList<Carnivore>();
 	ArrayList<Herbivore> herbivore = new ArrayList<Herbivore>();
 	ArrayList<Plant> plant = new ArrayList<Plant>();
@@ -42,7 +42,7 @@ public class ObjectsControl {
 	}
 
 	public void createObjects(String className,String species,int amount,int id,
-								int preferredTemperature,int location, int lifespan,
+								int preferredTemperature,int location, double lifespan,
 								double age, int foodChainPosition, int habitability, boolean healthy) {
 		int birthTick = 0;
 		if(className == "Carnivore"){
@@ -136,6 +136,7 @@ public class ObjectsControl {
 			calc.setHabitability(tiles.get(control.getPlant().get(i).location).getTemperature(),control.getPlant().get(i));
 		}
 	}
+
 	public void removeDeadObjects(ObjectsControl control){
 		for (int i = 0; i<carnivore.size(); i++){
 			if(carnivore.get(i).age >= carnivore.get(i).lifespan){
@@ -154,6 +155,60 @@ public class ObjectsControl {
 				plant.remove(i);
 			}
 		}
+		
+	}
+	public void age(ObjectsControl control,Calc calc){
+//		HERBIVORES	
+		for(int i = 0; i<herbivore.size(); i++){
+		calc.setAge(control.getHerbivore().get(i).age, control.getHerbivore().get(i));
+		}
+//		CARNIVORES
+		for(int i = 0; i<carnivore.size(); i++){
+		
+		}
+//		PLANTS
+		for(int i = 0; i<plant.size(); i++){
+		
+		}
+	}
+	public void move(ObjectsControl control, Calc calc, ArrayList<Tile> tiles) {
+		int n;
+		int k=2;
+//		HERBIVORES	
+		for(int i = 0; i<herbivore.size(); i++){
+			n=control.getHerbivore().get(i).location;
+			if (n%k<0){//left tile exists
+				if (calc.getHabitability(n-1, control.getHerbivore().get(i), tiles)>control.getHerbivore().get(i).habitability) {
+					calc.setLocation(n-1, control.getHerbivore().get(i));;
+				}
+			}
+			if(n%k<k-1){//right tile exists
+				if (calc.getHabitability(n+1, control.getHerbivore().get(i), tiles)>control.getHerbivore().get(i).habitability) {
+					calc.setLocation(n+1, control.getHerbivore().get(i));;
+				}
+			}
+			if (n>=k){//top tile exists
+				if (calc.getHabitability(n-k, control.getHerbivore().get(i), tiles)>control.getHerbivore().get(i).habitability) {
+					calc.setLocation(n-k, control.getHerbivore().get(i));;
+				}
+			}
+			if (n<k*(k-1)){//bot tile exists
+				if (calc.getHabitability(n+k, control.getHerbivore().get(i), tiles)>control.getHerbivore().get(i).habitability) {
+					calc.setLocation(n+k, control.getHerbivore().get(i));;
+				}
+			}
+		}
+//		CARNIVORES
+		for(int i = 0; i<carnivore.size(); i++){
+			
+		}
+		/*
+		 * if (n%k<0), left tile exists
+		 * if (n%k<k-1), right tile -
+		 * if (n>=k) top
+		 * if (n<k*(k-1)) bot
+		*/
+		
 		
 	}
 }

@@ -46,7 +46,6 @@ public class Ticktick {
 		    	System.out.println("Location 2: "+control.getHerbivore().get(0).location);
 		    	System.out.println("Age: "+control.getHerbivore().get(0).age+" \nLifespan: "+control.getHerbivore().get(0).lifespan);
 		    	tickcount++;
-
 		    	
 		    }
 		});

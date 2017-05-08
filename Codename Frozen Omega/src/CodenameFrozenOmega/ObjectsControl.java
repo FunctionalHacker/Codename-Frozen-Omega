@@ -125,18 +125,123 @@ public class ObjectsControl{
 	public void setHabitabilities(Calc calc,ObjectsControl control, ArrayList<Tile> tiles){
 //		HERBIVORES	
 		for(int i = 0; i<herbivore.size(); i++){
-			calc.setHabitability(tiles.get(control.getHerbivore().get(i).location).getTemperature(),control.getHerbivore().get(i));
+			calc.setHabitability(control,tiles.get(control.getHerbivore().get(i).location).getTemperature(),control.getHerbivore().get(i), "Herbivore");
 		}
 //		CARNIVORES
 		for(int i = 0; i<carnivore.size(); i++){
-			calc.setHabitability(tiles.get(control.getCarnivore().get(i).location).getTemperature(),control.getCarnivore().get(i));
+			calc.setHabitability(control,tiles.get(control.getCarnivore().get(i).location).getTemperature(),control.getCarnivore().get(i), "Carnivore");
 		}
 //		PLANTS
 		for(int i = 0; i<plant.size(); i++){
-			calc.setHabitability(tiles.get(control.getPlant().get(i).location).getTemperature(),control.getPlant().get(i));
+			calc.setHabitability(control,tiles.get(control.getPlant().get(i).location).getTemperature(),control.getPlant().get(i), "Plant");
 		}
 	}
-
+	public void predsEat(ObjectsControl control){
+		int tile0c, tile1c, tile2c, tile3c, tile0h, tile1h, tile2h, tile3h, happymeal;
+		tile0h=control.listHerbivoresInTile(0);
+		tile1h=control.listHerbivoresInTile(1);
+		tile2h=control.listHerbivoresInTile(2);
+		tile3h=control.listHerbivoresInTile(3);
+		tile0c=control.listCarnivoresInTile(0);
+		tile1c=control.listCarnivoresInTile(1);
+		tile2c=control.listCarnivoresInTile(2);
+		tile3c=control.listCarnivoresInTile(3);
+		
+		if (tile0c>0 && tile0h>0) {
+			if (tile0c<tile0h) {
+				happymeal=(int) (tile0h*0.1);
+				for (int i = 0; i <= happymeal-1; i++) {
+					if(herbivore.get(i).location==0){
+						herbivore.remove(i);
+					}else {
+						i--;
+					}
+					}
+				}
+			}
+			if (tile0c>tile0h) {
+				happymeal=(int) (tile0h*0.5);
+				for (int i = 0; i <= happymeal-1; i++) {
+					if(herbivore.get(i).location==0){
+						herbivore.remove(i);
+					}else {
+						i--;
+					}
+				}
+			}
+		
+		
+		if (tile1c>0 && tile1h>0) {
+			if (tile1c<tile1h) {
+				happymeal=(int) (tile1h*0.1);
+				for (int i = 0; i <= happymeal-1; i++) {
+					if(herbivore.get(i).location==1){
+						herbivore.remove(i);
+					}else {
+						i--;
+					}
+				}
+			}
+			if (tile1c>tile1h) {
+				happymeal=(int) (tile1h*0.5);
+				for (int i = 0; i <= happymeal-1; i++) {
+					if(herbivore.get(i).location==1){
+						herbivore.remove(i);
+					}else {
+						i--;
+					}
+				}
+			}
+		
+		}
+		if (tile2c>0 && tile2h>0) {
+			if (tile2c<tile2h) {
+				happymeal=(int) (tile2h*0.1);
+				for (int i = 0; i <= happymeal-1; i++) {
+					if(herbivore.get(i).location==2){
+						herbivore.remove(i);
+					}else {
+						i--;
+					}
+				}
+			}
+			if (tile2c>tile2h) {
+				happymeal=(int) (tile2h*0.5);
+				for (int i = 0; i <= happymeal-1; i++) {
+					if(herbivore.get(i).location==2){
+						herbivore.remove(i);
+					}else {
+						i--;
+					}
+				}
+			}
+		
+		}
+		if (tile3c>0 && tile3h>0) {
+			if (tile3c<tile3h) {
+				happymeal=(int) (tile3h*0.1);
+				for (int i = 0; i <= happymeal-1; i++) {
+					if(herbivore.get(i).location==3){
+						herbivore.remove(i);
+					}else {
+						i--;
+					}
+				}
+			}
+			if (tile3c>tile3h) {
+				happymeal=(int) (tile3h*0.5);
+				for (int i = 0; i <= happymeal-1; i++) {
+					if(herbivore.get(i).location==3){
+						herbivore.remove(i);
+					}else {
+						i--;
+					}
+				}
+			}
+		
+		}
+	}
+	
 	public void removeDeadObjects(ObjectsControl control){
 		for (int i = 0; i<carnivore.size(); i++){
 			if(carnivore.get(i).age >= carnivore.get(i).lifespan){
@@ -178,29 +283,49 @@ public class ObjectsControl{
 		for(int i = 0; i<herbivore.size(); i++){
 			n=control.getHerbivore().get(i).location;
 			if (n%k<0){//left tile exists
-				if (calc.getHabitability(n-1, control.getHerbivore().get(i), tiles)>control.getHerbivore().get(i).habitability) {
+				if (calc.getHabitability(n-1, control, control.getHerbivore().get(i), tiles, "Herbivore")>control.getHerbivore().get(i).habitability) {
 					calc.setLocation(n-1, control.getHerbivore().get(i));;
 				}
 			}
 			if(n%k<k-1){//right tile exists
-				if (calc.getHabitability(n+1, control.getHerbivore().get(i), tiles)>control.getHerbivore().get(i).habitability) {
+				if (calc.getHabitability(n+1, control, control.getHerbivore().get(i), tiles, "Herbivore")>control.getHerbivore().get(i).habitability) {
 					calc.setLocation(n+1, control.getHerbivore().get(i));;
 				}
 			}
 			if (n>=k){//top tile exists
-				if (calc.getHabitability(n-k, control.getHerbivore().get(i), tiles)>control.getHerbivore().get(i).habitability) {
+				if (calc.getHabitability(n-k, control, control.getHerbivore().get(i), tiles, "Herbivore")>control.getHerbivore().get(i).habitability) {
 					calc.setLocation(n-k, control.getHerbivore().get(i));;
 				}
 			}
 			if (n<k*(k-1)){//bot tile exists
-				if (calc.getHabitability(n+k, control.getHerbivore().get(i), tiles)>control.getHerbivore().get(i).habitability) {
+				if (calc.getHabitability(n+k, control, control.getHerbivore().get(i), tiles, "Herbivore")>control.getHerbivore().get(i).habitability) {
 					calc.setLocation(n+k, control.getHerbivore().get(i));;
 				}
 			}
 		}
 //		CARNIVORES
 		for(int i = 0; i<carnivore.size(); i++){
-			
+			n=control.getCarnivore().get(i).location;
+			if (n%k<0){//left tile exists
+				if (calc.getHabitability(n-1, control, control.getCarnivore().get(i), tiles, "Carnivore")>control.getCarnivore().get(i).habitability) {
+					calc.setLocation(n-1, control.getCarnivore().get(i));;
+				}
+			}
+			if(n%k<k-1){//right tile exists
+				if (calc.getHabitability(n+1, control, control.getCarnivore().get(i), tiles, "Carnivore")>control.getCarnivore().get(i).habitability) {
+					calc.setLocation(n+1, control.getCarnivore().get(i));;
+				}
+			}
+			if (n>=k){//top tile exists
+				if (calc.getHabitability(n-k, control, control.getCarnivore().get(i), tiles, "Carnivore")>control.getCarnivore().get(i).habitability) {
+					calc.setLocation(n-k, control.getCarnivore().get(i));;
+				}
+			}
+			if (n<k*(k-1)){//bot tile exists
+				if (calc.getHabitability(n+k, control, control.getCarnivore().get(i), tiles, "Carnivore")>control.getCarnivore().get(i).habitability) {
+					calc.setLocation(n+k, control.getCarnivore().get(i));;
+				}
+			}
 		}
 		/*
 		 * if (n%k<0), left tile exists

@@ -91,7 +91,7 @@ public class Calc {
     return randomValue;
     }
 //habitability aging rate weather/temperature changing  method
-     
+     /*
      public  double grow(){
         
          if (habitability >1){
@@ -103,9 +103,9 @@ public class Calc {
          age = age +2;
      }
         return age;
-       
      }
-     public int getHabitability(int location, Organism organism, ArrayList<Tile> tiles){
+      */
+     public int getHabitability(int location,ObjectsControl control, Organism organism, ArrayList<Tile> tiles, String species){
     	 double temperature=tiles.get(location).getTemperature();
     	 int nexthabitability;
     	 if (temperature-2 < organism.preferredTemperature && 
@@ -119,20 +119,43 @@ public class Calc {
              else{
              	nexthabitability=0;
              }
+    	 if (species=="Carnivore") {
+    		 if (control.listHerbivoresInTile(location)>0) {
+				nexthabitability++;
+			}
+		}
+    	 if (species=="Herbivore") {
+			if (control.listCarnivoresInTile(location)>0) {
+				nexthabitability++;
+			}
+		}
     	 return nexthabitability;
      }
-     public  void setHabitability(double temperature, Organism organism){
+     public  void setHabitability(ObjectsControl control, double temperature, Organism organism, String species){
+    	 			int habitability;
                     if (temperature-2 < organism.preferredTemperature && 
                         temperature+2 > organism.preferredTemperature){
-                    	organism.habitability=2;
+                    	habitability=2;
                     }
                     else if (temperature-10 < organism.preferredTemperature && 
                              temperature+10 > organism.preferredTemperature){
-                    	organism.habitability=1;
+                    	habitability=1;
                     }
                     else{
-                    	organism.habitability=0;
+                    	habitability=0;
                     }
+                    if (species=="Carnivore") {
+               		 if (control.listHerbivoresInTile(organism.location)>control.listCarnivoresInTile(organism.location)) {
+           				habitability++;
+           			}
+           		}
+               	 if (species=="Herbivore") {
+           			if (control.listCarnivoresInTile(organism.location)>control.listHerbivoresInTile(organism.location)) {
+           				habitability--;
+           			}
+           		}
+               	 organism.habitability=habitability;
+               	 
       }
      public void setLocation(int location, Organism organism){
     	 organism.location=location;

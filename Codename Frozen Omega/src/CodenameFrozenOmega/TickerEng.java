@@ -38,7 +38,7 @@ public class TickerEng {
         long currentTime = System.currentTimeMillis();
 
         if (currentTime >= nextTick) {
-            long targetTimeDelta = 1000L / tickRate;
+            long targetTimeDelta = 5000L / tickRate;
 
             if (lastTick == 0 || nextTick == 0) {
                 lastTick = currentTime - targetTimeDelta;

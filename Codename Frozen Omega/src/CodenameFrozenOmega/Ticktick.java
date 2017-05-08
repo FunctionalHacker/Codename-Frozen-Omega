@@ -32,7 +32,7 @@ public class Ticktick {
 		    		}
 		    	}
 		    	System.out.println("Location 1: "+control.getHerbivore().get(0).location);
-		    	//tiles.set(0, tiles.get(0)).setTemperature((float) 10.0);
+		    	tiles.get(0).setTemperature(10);
 		    	control.setHabitabilities(calc, control, tiles);
 		    	control.move(control, calc, tiles);
 		    	control.age(control, calc);

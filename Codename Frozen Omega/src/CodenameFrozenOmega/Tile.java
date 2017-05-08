@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Tile {
 	int herbivores, carnivores, diseases, plants, location;
-	float temperature;
+	double temperature;
 	
 	public int getLocation() {
 		return location;
@@ -15,15 +15,15 @@ public class Tile {
 		this.location = location;
 	}
 
-	public float getTemperature() {
+	public double getTemperature() {
 		return temperature;
 	}
 
-	public void setTemperature(float temperature) {
-		this.temperature = temperature;
+	public void setTemperature(double d) {
+		this.temperature = d;
 	}
 
-	public Tile(int location, float temperature) {
+	public Tile(int location, double temperature) {
 		super();
 		this.location = location;
 		this.temperature = temperature;

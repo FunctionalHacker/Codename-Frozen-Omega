@@ -106,7 +106,7 @@ public class Calc {
        
      }
      public int getHabitability(int location, Organism organism, ArrayList<Tile> tiles){
-    	 float temperature=tiles.get(location).getTemperature();
+    	 double temperature=tiles.get(location).getTemperature();
     	 int nexthabitability;
     	 if (temperature-2 < organism.preferredTemperature && 
                  temperature+2 > organism.preferredTemperature){
@@ -121,7 +121,7 @@ public class Calc {
              }
     	 return nexthabitability;
      }
-     public  void setHabitability(float temperature, Organism organism){
+     public  void setHabitability(double temperature, Organism organism){
                     if (temperature-2 < organism.preferredTemperature && 
                         temperature+2 > organism.preferredTemperature){
                     	organism.habitability=2;
@@ -145,9 +145,9 @@ public class Calc {
     	 if (habitability>1) { 	        
     	     organism.lifespan=lifespan*1.00001;
     	    } else if (habitability ==1){
-    	        organism.lifespan=lifespan*0.000099;
+    	        organism.lifespan=lifespan*0.99999;
     	    } else if (habitability <1){
-    	        organism.lifespan=lifespan*0.00098;
+    	        organism.lifespan=lifespan*0.9998;
     	    }
     	    
     	 }

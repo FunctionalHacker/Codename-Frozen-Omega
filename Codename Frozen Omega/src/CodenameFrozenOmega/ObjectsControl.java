@@ -136,16 +136,24 @@ public class ObjectsControl {
 			calc.setHabitability(tiles.get(control.getPlant().get(i).location).getTemperature(),control.getPlant().get(i));
 		}
 	}
-//	public  double grow(){
-//        
-//        if (habitability >1){
-//            age = age + 0.75;
-//
-//    } else if (habitability ==1){
-//        age = age +1;
-//    } else if (habitability <1){
-//        age = age +2;
-//    }
-//       return age;
-//    }
+	public void removeDeadObjects(ObjectsControl control){
+		for (int i = 0; i<carnivore.size(); i++){
+			if(carnivore.get(i).age >= carnivore.get(i).lifespan){
+				carnivore.remove(i);
+			}
+		}
+		
+		for (int i = 0; i<herbivore.size(); i++){
+			if(herbivore.get(i).age >= herbivore.get(i).lifespan){
+				herbivore.remove(i);
+			}
+		}
+		
+		for (int i = 0; i<plant.size(); i++){
+			if(plant.get(i).age >= plant.get(i).lifespan){
+				plant.remove(i);
+			}
+		}
+		
+	}
 }

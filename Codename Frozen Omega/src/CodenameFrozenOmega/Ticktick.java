@@ -26,11 +26,11 @@ public class Ticktick {
 		    		ObjectsControl control = new ObjectsControl();
 		    		
 		    		control.createObjects("Herbivore", "Koala", 50, 2, 21, 1, 20, 0, 0, 0,true);
-		    		control.createObjects("Carnivore", "puUma", 120, 1, 12, 0, 0, 0, 1, 0, true);
 		    		for(int i=0; i<=4; i++){
 		    			tiles.add(new Tile(i, 21));
 		    		}
 		    		control.setHabitabilities(calc, control, tiles);
+		    		System.out.println(control.listHerbivoresInTile(0));
 		    		System.out.println("Puuman habiliteetti: "+control.getCarnivore().get(0).habitability);
 		    		System.out.println("Koalan habiliteetti: "+control.getHerbivore().get(0).habitability);
 		    	}

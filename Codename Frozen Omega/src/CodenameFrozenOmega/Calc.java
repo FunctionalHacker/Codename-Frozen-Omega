@@ -155,7 +155,7 @@ public class Calc {
 
 //saalis ja saalistajien suhteen laskua lisäilyä ja poistoa lotka-Volterra equation
 //what?
-public int Predatorformula(ObjectsControl control, Calc calc){
+/*public int Predatorformula(ObjectsControl control, Calc calc){
     
     Tile tile=null;
 //any real numbers
@@ -163,7 +163,7 @@ public int Predatorformula(ObjectsControl control, Calc calc){
 
     
   for (int i = 1; i<=tile.gettilelocation(); i++){
-               int predators = control.listCarnivoresInTile(i);
+              int predators = control.listCarnivoresInTile(i);
                int  prey = control.listHerbivoresInTile(i);
                 double newprey = (a * prey)-(b*prey*predators);
                 double newpredator = (prey*predators*d)-(c*predators);
@@ -171,5 +171,5 @@ public int Predatorformula(ObjectsControl control, Calc calc){
                 control.createObjects("Herbivore", "prey", (int)(newprey-prey), 2, organism.preferredTemperature,i, (int)calc.setLife(2), 0, 2);
   }    
 
-            }
+            }*/
 }

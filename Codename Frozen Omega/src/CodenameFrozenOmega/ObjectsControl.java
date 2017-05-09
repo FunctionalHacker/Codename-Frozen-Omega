@@ -159,88 +159,9 @@ public class ObjectsControl{
 					}
 				}
 			}
-			if (tile0c>tile0h) {
-				happymeal=(int) (tile0h*0.5);
-				for (int i = 0; i <= happymeal-1; i++) {
-					if(herbivore.get(i).location==0){
-						herbivore.remove(i);
-					}else {
-						i--;
-					}
-				}
-			}
-		
-		
-		if (tile1c>0 && tile1h>0) {
-			if (tile1c<tile1h) {
-				happymeal=(int) (tile1h*0.1);
-				for (int i = 0; i <= happymeal-1; i++) {
-					if(herbivore.get(i).location==1){
-						herbivore.remove(i);
-					}else {
-						i--;
-					}
-				}
-			}
-			if (tile1c>tile1h) {
-				happymeal=(int) (tile1h*0.5);
-				for (int i = 0; i <= happymeal-1; i++) {
-					if(herbivore.get(i).location==1){
-						herbivore.remove(i);
-					}else {
-						i--;
-					}
-				}
-			}
-		
+			
 		}
-		if (tile2c>0 && tile2h>0) {
-			if (tile2c<tile2h) {
-				happymeal=(int) (tile2h*0.1);
-				for (int i = 0; i <= happymeal-1; i++) {
-					if(herbivore.get(i).location==2){
-						herbivore.remove(i);
-					}else {
-						i--;
-					}
-				}
-			}
-			if (tile2c>tile2h) {
-				happymeal=(int) (tile2h*0.5);
-				for (int i = 0; i <= happymeal-1; i++) {
-					if(herbivore.get(i).location==2){
-						herbivore.remove(i);
-					}else {
-						i--;
-					}
-				}
-			}
-		
-		}
-		if (tile3c>0 && tile3h>0) {
-			if (tile3c<tile3h) {
-				happymeal=(int) (tile3h*0.1);
-				for (int i = 0; i <= happymeal-1; i++) {
-					if(herbivore.get(i).location==3){
-						herbivore.remove(i);
-					}else {
-						i--;
-					}
-				}
-			}
-			if (tile3c>tile3h) {
-				happymeal=(int) (tile3h*0.5);
-				for (int i = 0; i <= happymeal-1; i++) {
-					if(herbivore.get(i).location==3){
-						herbivore.remove(i);
-					}else {
-						i--;
-					}
-				}
-			}
-		
-		}
-	}
+	
 	
 	public void removeDeadObjects(ObjectsControl control){
 		for (int i = 0; i<carnivore.size(); i++){

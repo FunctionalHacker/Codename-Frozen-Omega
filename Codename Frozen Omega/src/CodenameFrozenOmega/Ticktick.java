@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Ticktick {
 	Calc calc = new Calc();
+	Tile tile = new Tile(600, 1000);
 	ObjectsControl control = new ObjectsControl();
 	static int tickcount=0;
 	public void Start(int rate){
@@ -27,14 +28,14 @@ public class Ticktick {
 		    	if(tickcount == 0){
 		    		//control.createObjects(className, species, amount, id, preferredTemperature,
 		    		//						location, lifespan, age, foodChainPosition, habitability, healthy);
-		    		control.createObjects("Herbivore", "Koala", 15, 2, 21, 0, 5, 20, 0, 0,true);
-		    		control.createObjects("Carnivore", "Joku", 55, 1, 20, 0, 5, 0, 0, 0, true);
-		    		control.createObjects("Herbivore", "Koala", 12, 2, 21, 1, 5, 20, 0, 0,true);
-		    		control.createObjects("Carnivore", "Joku", 63, 1, 20, 1, 5, 0, 0, 0, true);
-		    		control.createObjects("Herbivore", "Koala", 33, 2, 21, 2, 2000, 20, 0, 0,true);
-		    		control.createObjects("Carnivore", "Joku", 122, 1, 20, 2, 7300, 0, 0, 0, true);
-		    		control.createObjects("Herbivore", "Koala", 3, 2, 21, 3, 2000, 20, 0, 0,true);
-		    		control.createObjects("Carnivore", "Joku", 23, 1, 20, 3, 7300, 0, 0, 0, true);
+		    		control.createObjects("Herbivore", "Koala", 15, 2, 20, 0, 5, 20, 0, 0,true);
+		    		control.createObjects("Carnivore", "Joku", 55, 1, 15, 0, 5, 0, 0, 0, true);
+		    		control.createObjects("Herbivore", "Koala", 12, 2, 25, 1, 5, 20, 0, 0,true);
+		    		control.createObjects("Carnivore", "Joku", 63, 1, 22, 1, 5, 0, 0, 0, true);
+		    		control.createObjects("Herbivore", "Koala", 33, 2, 30, 2, 2000, 20, 0, 0,true);
+		    		control.createObjects("Carnivore", "Joku", 122, 1, 10, 2, 7300, 0, 0, 0, true);
+		    		control.createObjects("Herbivore", "Koala", 3, 2, 13, 3, 2000, 20, 0, 0,true);
+		    		control.createObjects("Carnivore", "Joku", 23, 1, 17, 3, 7300, 0, 0, 0, true);
 		    		for(int i=0; i<=4; i++){
 		    			tiles.add(new Tile(i, 21));
 		    		}
@@ -61,8 +62,12 @@ public class Ticktick {
 		    	System.out.println("Tile1: Herbivores: "+control.listHerbivoresInTile(1)+" Carnivores: "+control.listCarnivoresInTile(1));
 		    	System.out.println("Tile2: Herbivores: "+control.listHerbivoresInTile(2)+" Carnivores: "+control.listCarnivoresInTile(2));
 		    	System.out.println("Tile3: Herbivores: "+control.listHerbivoresInTile(3)+" Carnivores: "+control.listCarnivoresInTile(3));
+		    	System.out.println("Temperature: "+tiles.get(0).temperature);
 		    	
 		    	//COUNTERS
+		    	if (tickcount%2==0 && tickcount!=0) {
+		    		tile.randTemperature(tiles);
+		    	}
 		    	if(tickcount%50==0 && tickcount!=0){
 		    
 		    	}

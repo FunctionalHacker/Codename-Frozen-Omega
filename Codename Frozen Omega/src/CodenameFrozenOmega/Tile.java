@@ -48,14 +48,28 @@ public class Tile {
 		}
 		return 0;
 	}
-	private static int randtemperature(int min, int max) {
-		Random rn= new Random();
-		int randomValue = min + (max - min) * rn.nextInt();
-		return randomValue;
+	public void randTemperature(ArrayList<Tile> tiles) {
+		int min=1;
+		int max=2;
+		for (int i = 0; i <= 3; i++) {
+			
+			double temp=tiles.get(i).getTemperature();
+			Random rn= new Random();
+			int randomValue = min + (max - min) * rn.nextInt();
+			System.out.println("RAND: "+randomValue);
+			if (randomValue>0) {
+				tiles.get(i).setTemperature(temp-2);
+				
+			}else {
+				tiles.get(i).setTemperature(temp+2);
+			}
+		}
 	    }
+	/*
 		public float settemperature(){
 			float temperature =randtemperature(10,30);
 			temperature=  (float) (temperature+Math.random());
 			return Math.round(temperature);
 			}
+			*/
 }

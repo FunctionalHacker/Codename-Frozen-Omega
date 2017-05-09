@@ -126,6 +126,13 @@ public class Calc {
 				}
 			}
 		}
+    	 if (species=="Carnivore") {
+    		 if (control.listHerbivoresInTile(location)<control.listHerbivoresInTile(organism.location)) {
+    			if (organism.habitability>0) {					
+    				nexthabitability--;
+				}
+			}
+		}
     	 if (species=="Herbivore") {
 			if (control.listCarnivoresInTile(location)>control.listCarnivoresInTile(organism.location)) {
 				if (organism.habitability>0) {
@@ -133,6 +140,13 @@ public class Calc {
 				}
 			}
 		}
+    	 if (species=="Herbivore") {
+ 			if (control.listCarnivoresInTile(location)<control.listCarnivoresInTile(organism.location)) {
+ 				if (organism.habitability<2) {
+ 					nexthabitability++;
+ 				}
+ 			}
+ 		}
     	 return nexthabitability;
      }
      public  void setHabitability(ObjectsControl control, double temperature, Organism organism, String species){
@@ -149,11 +163,16 @@ public class Calc {
                     	habitability=0;
                     }
                     if (species=="Carnivore") {
-               		 if (control.listHerbivoresInTile(organism.location)>control.listCarnivoresInTile(organism.location)) {
-           				if (organism.habitability<2) {
-           					habitability++;							
+               		 if (control.listHerbivoresInTile(organism.location)<control.listCarnivoresInTile(organism.location)) {
+           				if (organism.habitability>0) {
+           					habitability--;							
 						}
            			}
+               		 if (control.listHerbivoresInTile(organism.location)>control.listCarnivoresInTile(organism.location)) {
+            				if (organism.habitability<2) {
+            					habitability++;							
+ 						}
+            			}
            		}
                	 if (species=="Herbivore") {
            			if (control.listCarnivoresInTile(organism.location)>control.listHerbivoresInTile(organism.location)) {

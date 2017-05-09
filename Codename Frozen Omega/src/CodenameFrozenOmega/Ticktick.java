@@ -27,10 +27,10 @@ public class Ticktick {
 		    	if(tickcount == 0){
 		    		//control.createObjects(className, species, amount, id, preferredTemperature,
 		    		//						location, lifespan, age, foodChainPosition, habitability, healthy);
-		    		control.createObjects("Herbivore", "Koala", 15, 2, 21, 0, 2000, 20, 0, 0,true);
-		    		control.createObjects("Carnivore", "Joku", 55, 1, 20, 0, 7300, 0, 0, 0, true);
-		    		control.createObjects("Herbivore", "Koala", 12, 2, 21, 1, 2000, 20, 0, 0,true);
-		    		control.createObjects("Carnivore", "Joku", 63, 1, 20, 1, 7300, 0, 0, 0, true);
+		    		control.createObjects("Herbivore", "Koala", 15, 2, 21, 0, 5, 20, 0, 0,true);
+		    		control.createObjects("Carnivore", "Joku", 55, 1, 20, 0, 5, 0, 0, 0, true);
+		    		control.createObjects("Herbivore", "Koala", 12, 2, 21, 1, 5, 20, 0, 0,true);
+		    		control.createObjects("Carnivore", "Joku", 63, 1, 20, 1, 5, 0, 0, 0, true);
 		    		control.createObjects("Herbivore", "Koala", 33, 2, 21, 2, 2000, 20, 0, 0,true);
 		    		control.createObjects("Carnivore", "Joku", 122, 1, 20, 2, 7300, 0, 0, 0, true);
 		    		control.createObjects("Herbivore", "Koala", 3, 2, 21, 3, 2000, 20, 0, 0,true);

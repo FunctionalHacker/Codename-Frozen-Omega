@@ -120,13 +120,17 @@ public class Calc {
              	nexthabitability=0;
              }
     	 if (species=="Carnivore") {
-    		 if (control.listHerbivoresInTile(location)>0) {
-				nexthabitability++;
+    		 if (control.listHerbivoresInTile(location)>control.listHerbivoresInTile(organism.location)) {
+    			if (organism.habitability<2) {					
+    				nexthabitability++;
+				}
 			}
 		}
     	 if (species=="Herbivore") {
-			if (control.listCarnivoresInTile(location)>0) {
-				nexthabitability++;
+			if (control.listCarnivoresInTile(location)>control.listCarnivoresInTile(organism.location)) {
+				if (organism.habitability>0) {
+					nexthabitability--;
+				}
 			}
 		}
     	 return nexthabitability;
@@ -146,12 +150,16 @@ public class Calc {
                     }
                     if (species=="Carnivore") {
                		 if (control.listHerbivoresInTile(organism.location)>control.listCarnivoresInTile(organism.location)) {
-           				habitability++;
+           				if (organism.habitability<2) {
+           					habitability++;							
+						}
            			}
            		}
                	 if (species=="Herbivore") {
            			if (control.listCarnivoresInTile(organism.location)>control.listHerbivoresInTile(organism.location)) {
-           				habitability--;
+           				if (organism.habitability>0) {
+           					habitability--;
+						}
            			}
            		}
                	 organism.habitability=habitability;

@@ -21,27 +21,22 @@ public class Calc {
      double habitability;
      public Climate climate;
      public Organism organism;
-  public double setLife(int id){
+  public double setLife(String className){
       
-        switch (id) {
-            //large carnivores      7300 +- 1825
-            case 1:  
+        switch (className) {
+         //carnivores
+            case "Carnivore":  
                lifespan =  (int) randomize(1);
                break;
-                     
-           // small carnivores
-            case 2:  
-                 lifespan =  (int) randomize(2);
-                break;
         //Herbivores
-            case 3:  
+            case "Herbivore":  
                 lifespan =  (int) randomize(3);
                break;
-         //bacteria
-            case 4:  
-               lifespan =  (int) randomize(4);
-               break;
-            case 5:
+//         //bacteria
+//            case 4:  
+//               lifespan =  (int) randomize(4);
+//               break;
+            case "Plant":
                 lifespan = (int) randomize(5);
                 break;
                 
@@ -58,24 +53,24 @@ public class Calc {
                       switch (id) {
             //large carnivores  7300 +- 1825
             case 1:  
-                      lifespan = (int) (randint(5475 , 9125) * habitability);
+                      lifespan = (int) (randint(5475 , 9125));
                       
                      break;
            // small carnivores 4-6 1460-2190 days
-            case 2:  
-                  lifespan = (int) (randint(1460 , 2190) * habitability);
-                     break;
+//            case 2:  
+//                  lifespan = (int) (randint(1460 , 2190) * habitability);
+//                     break;
         //Herbivores 7300 days
             case 3:  
-                lifespan = (int) (randint(5475 , 9125)* habitability);
+                lifespan = (int) (randint(5475 , 9125));
                      break;
          //trees 29200 +-5475 80 +-15 years
             case 4:  
-                lifespan = (int) (randint(23725 , 34675)* habitability);
+                lifespan = (int) (randint(23725 , 34675));
                      break;
                      // non perennials
             case 5:  
-                lifespan = (int) (randint(330, 360)*habitability);
+                lifespan = (int) (randint(330, 360));
                      break;
 
            

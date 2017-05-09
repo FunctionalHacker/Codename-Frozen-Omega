@@ -46,7 +46,7 @@ public class Ticktick {
 		    	//MANDATORY FOR EACH RUN
 		    	control.setHabitabilities(calc, control, tiles);
 		    	System.out.println("setted");
-		    	//control.predsEat(control);
+		    	control.predsEat(control, calc);
 		    	System.out.println("Eatsted'st");
 		    	control.move(control, calc, tiles);
 		    	System.out.println("Moved");

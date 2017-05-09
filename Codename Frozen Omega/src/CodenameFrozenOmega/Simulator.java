@@ -14,7 +14,7 @@ public class Simulator {
 		for(int i=1; i<=4; i++){
 			tiles.add(new Tile(i, 21));
 			Ticktick ticker = new Ticktick();
-			ticker.Start(1);
+			ticker.Start(5);
 		}
 	}
 }

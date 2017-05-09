@@ -139,59 +139,61 @@ public class ObjectsControl{
 			calc.setHabitability(control,tiles.get(control.getPlant().get(i).location).getTemperature(),control.getPlant().get(i), "Plant");
 		}
 	}
-/*public int Predatorformula(ObjectsControl control, Calc calc){
-    
-    Tile tile=null;
-//any real numbers
-    double a=0.1, b=0.02, c=0.4, d=0.02;
 
-  
-  for (int i = 1; i<=tile.gettilelocation(); i++){
-              int predators = control.listCarnivoresInTile(i);
-               int  prey = control.listHerbivoresInTile(i);
-                double newprey = (a * prey)-(b*prey*predators);
-                double newpredator = (prey*predators*d)-(c*predators);
-                control.createObjects("Carnivore", "predator", (int)(newpredator-predators), 1, organism.preferredTemperature,i,(int)calc.setLife(1), 0, 1);
-                control.createObjects("Herbivore", "prey", (int)(newprey-prey), 2, organism.preferredTemperature,i, (int)calc.setLife(2), 0, 2);
-  }    
-
-            }
- */
-	public void predsEat(ObjectsControl control, Calc calc){
-		double prey, predators,newpredator,newprey;
-		double a=0.1, b=0.02, c=0.4, d=0.02;
-		for(int i=0;i<3;i++){
+	public void populationControl(ObjectsControl control, Calc calc){
+		double prey, predators,newpredator,newprey,plants,newplants;
+		//a ratio that predators eat prey b is reproduction rate per predators c is ratio that herbivores eat plants and d is reproduction rate of herbivores per plants
+		double a=0.2, b=0.001, c=0.4, d=0.002;
+		for(int i=0;i<4;i++){
 		prey=control.listHerbivoresInTile(i);
 		predators=control.listCarnivoresInTile(i);
-		newprey = (a * prey)-(b*prey*predators);
+		plants=control.listPlantsInTile(i);
+		newprey = ((a * prey)-(b*prey*predators))+plants*0.05;
 		newpredator = (prey*predators*d)-(c*predators);
+		newplants = ((a * prey)-(b*plants));
 		
-		if (newprey < 0){
-			newprey = newprey * -1;
-				for (int j = 0; j <= newprey-1; j++) {
-					if(herbivore.get(i).location==i){
-						herbivore.remove(i);
-					}else {
-						j--;
-					}
-					}
+
+		
+		if (newplants < plants){
+			newplants = newplants * -1;
+			if(plant.get(i).location==i){
+				removeFromArray(control, i, (int)newplants, "Plant");
 				}
-		if (newprey > 0){
-			control.createObjects("Herbivore", "prey", (int)(newprey-prey), 2,control.getHerbivore().get(i).preferredTemperature, i, (int)calc.setLife("Herbivore") , 0, 0, 0, true);
 		}
-		if(newpredator < 0){
-			newpredator = newpredator * -1;
-				for (int j = 0; j <= newprey-1; j++) {
-					if(carnivore.get(i).location==i){
-						carnivore.remove(i);
-					}else {
-						j--;
-					}
+		if (newplants > plants && control.plant.size()<1000){
+			control.createObjects("Plant", "plant", (int)(newplants), 2,control.getHerbivore().get(i).preferredTemperature, i, (int)calc.setLife("Plant") , 0, 0, 0, true);
+		}
+		
+		if (newprey < prey){
+			newprey = newprey * -1;
+			if(herbivore.get(i).location==i){
+				removeFromArray(control, i, (int)newprey, "Herbivore");
 				}
 			}
-		if(newpredator > 0){
-			control.createObjects("Carnivore", "predator", (int)(newpredator-predators), 2,control.getCarnivore().get(i).preferredTemperature, i, (int)calc.setLife("Carnivore") , 0, 0, 0, true);
-
+		if (newprey > prey && control.herbivore.size()<1000){
+			control.createObjects("Herbivore", "prey", (int)(newprey), 2,control.getHerbivore().get(i).preferredTemperature, i, (int)calc.setLife("Herbivore") , 0, 0, 0, true);
+		}
+		if(newpredator < predators){
+			newpredator = newpredator * -1;
+			if(carnivore.get(i).location==i){
+				removeFromArray(control, i, (int)newprey, "Carnivore");
+				}
+			}
+		if(newpredator > predators && control.carnivore.size()<1000){
+			control.createObjects("Carnivore", "predator", (int)(newpredator), 2,control.getCarnivore().get(i).preferredTemperature, i, (int)calc.setLife("Carnivore") , 0, 0, 0, true);
+			}
+		
+		if(newpredator == predators){
+			control.createObjects("Carnivore", "predator", 3, 2,control.getCarnivore().get(i).preferredTemperature, i, (int)calc.setLife("Carnivore") , 0, 0, 0, true);
+		}
+		if(newprey == prey){
+			control.createObjects("Herbivore", "prey", 3, 2,control.getHerbivore().get(i).preferredTemperature, i, (int)calc.setLife("Herbivore") , 0, 0, 0, true);
+		}
+		if(newplants == plants){
+			control.createObjects("Plant", "plant", 3, 2,control.getHerbivore().get(i).preferredTemperature, i, (int)calc.setLife("Plant") , 0, 0, 0, true);
+		}
+		if(control.carnivore.size()>2500){
+			
 		}
 		}
 	}		
@@ -297,29 +299,31 @@ public class ObjectsControl{
         switch (className) {
         case "Herbivore":  
            Iterator<Herbivore> herb =herbivore.iterator();
+           x=0;
            while(x<=amount && herb.hasNext()){
                
                if (herb.next().location==location){
                    x++;
-               herb.remove();
+                   herb.remove();
                }
+               
         }
 
         case "Carnivore":  
              Iterator<Carnivore> carni = carnivore.iterator();
-                  while(x<=amount && carni.hasNext()){
-               
-               if (carni.next().location==location){
-                   x++;
-               carni.remove();
+             x=0;     
+             while(x<=amount && carni.hasNext()){
+                	  if (carni.next().location==location){
+                		  x++;
+                		  carni.remove();
                }
         }
    
         case "Plant":  
             Iterator<Plant> plants = plant.iterator();
-                    while(x<=amount && plants.hasNext()){
-               
-               if (plants.next().location==location){
-                   x++;
-               plants.remove();
+            x=0; 
+            while(x<=amount && plants.hasNext()){
+                    	if (plants.next().location==location){
+                    		x++;
+                    		plants.remove();
 }}}}}

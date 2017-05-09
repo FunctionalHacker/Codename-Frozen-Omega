@@ -56,20 +56,13 @@ public class Tile {
 			double temp=tiles.get(i).getTemperature();
 			Random rn= new Random();
 			int randomValue = min + (max - min) * rn.nextInt();
-			System.out.println("RAND: "+randomValue);
 			if (randomValue>0) {
-				tiles.get(i).setTemperature(temp-2);
+				tiles.get(i).setTemperature(temp-2*rn.nextDouble());
 				
 			}else {
-				tiles.get(i).setTemperature(temp+2);
+				tiles.get(i).setTemperature(temp+2*rn.nextDouble());
 			}
 		}
 	    }
-	/*
-		public float settemperature(){
-			float temperature =randtemperature(10,30);
-			temperature=  (float) (temperature+Math.random());
-			return Math.round(temperature);
-			}
-			*/
+
 }

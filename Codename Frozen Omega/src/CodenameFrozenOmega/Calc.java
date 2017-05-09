@@ -37,7 +37,7 @@ public class Calc {
 //               lifespan =  (int) randomize(4);
 //               break;
             case "Plant":
-                lifespan = (int) randomize(5);
+                lifespan = (int) randomize(4);
                 break;
                 
   }
@@ -53,7 +53,7 @@ public class Calc {
                       switch (id) {
             //large carnivores  7300 +- 1825
             case 1:  
-                      lifespan = (int) (randint(5475 , 9125));
+                      lifespan = (int) (randint(250 , 600));
                       
                      break;
            // small carnivores 4-6 1460-2190 days
@@ -62,11 +62,11 @@ public class Calc {
 //                     break;
         //Herbivores 7300 days
             case 3:  
-                lifespan = (int) (randint(5475 , 9125));
+                lifespan = (int) (randint(250 , 600));
                      break;
          //trees 29200 +-5475 80 +-15 years
             case 4:  
-                lifespan = (int) (randint(23725 , 34675));
+                lifespan = (int) (randint(300 , 800));
                      break;
                      // non perennials
             case 5:  
@@ -79,27 +79,14 @@ public class Calc {
                      return lifespan;
       
 }
-     private static int randint(int min, int max) {
+     public int randint(int min, int max) {
               
     Random rn= new Random();
    int randomValue = min + (max - min) * rn.nextInt();
     return randomValue;
     }
-//habitability aging rate weather/temperature changing  method
-     /*
-     public  double grow(){
-        
-         if (habitability >1){
-             age = age + 0.75;
 
-     } else if (habitability ==1){
-         age = age +1;
-     } else if (habitability <1){
-         age = age +2;
-     }
-        return age;
-     }
-      */
+
      public double getHabitability(int location,ObjectsControl control, Organism organism, ArrayList<Tile> tiles, String species){
     	 double temperature=tiles.get(location).getTemperature();
     	 double nexthabitability;
@@ -209,36 +196,22 @@ public class Calc {
     	 habitability=organism.habitability;
     	 organism.age=age;
     	 if (habitability>1) { 	        
-    	     organism.lifespan=lifespan*1.00001;
+    	     organism.lifespan=lifespan*1.0001;
     	    } else if (habitability ==1){
-    	        organism.lifespan=lifespan*0.99999;
-    	    } else if (habitability <1){
+    	        organism.lifespan=lifespan*0.99999;    
+    	    } else if (habitability <1&& habitability>0.5){
     	        organism.lifespan=lifespan*0.9998;
-    	    }
-    	    
+    	    }else if (habitability<0.5&& habitability>0){
+    	    	organism.lifespan=lifespan*0.90;
+    	    }else if (habitability >1.5&& habitability<2){
+    	        organism.lifespan=lifespan*1.1;
+	     
+	    } else if (habitability ==0){
+	        organism.lifespan=lifespan*0.5;
+ 
     	 }
 		
 
-//saalis ja saalistajien suhteen laskua lisäilyä ja poistoa lotka-Volterra equation
-//what?
-
-/*public int Predatorformula(ObjectsControl control, Calc calc){
-    
-    Tile tile=null;
-//any real numbers
-    double a=0.1, b=0.02, c=0.4, d=0.02;
-
-  
-  for (int i = 1; i<=tile.gettilelocation(); i++){
-              int predators = control.listCarnivoresInTile(i);
-               int  prey = control.listHerbivoresInTile(i);
-                double newprey = (a * prey)-(b*prey*predators);
-                double newpredator = (prey*predators*d)-(c*predators);
-                control.createObjects("Carnivore", "predator", (int)(newpredator-predators), 1, organism.preferredTemperature,i,(int)calc.setLife(1), 0, 1);
-                control.createObjects("Herbivore", "prey", (int)(newprey-prey), 2, organism.preferredTemperature,i, (int)calc.setLife(2), 0, 2);
-  }    
-
-            }
- */
+     }
 
 }

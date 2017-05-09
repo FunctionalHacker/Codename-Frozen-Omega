@@ -145,40 +145,53 @@ public class Calc {
     	 return nexthabitability;
      }
      public  void setHabitability(ObjectsControl control, double temperature, Organism organism, String species){
-    	 			int habitability;
-                    if (temperature-2 < organism.preferredTemperature && 
-                        temperature+2 > organism.preferredTemperature){
-                    	habitability=2;
-                    }
-                    else if (temperature-10 < organism.preferredTemperature && 
-                             temperature+10 > organism.preferredTemperature){
-                    	habitability=1;
-                    }
-                    else{
-                    	habitability=0;
-                    }
-                    if (species=="Carnivore") {
-               		 if (control.listHerbivoresInTile(organism.location)<control.listCarnivoresInTile(organism.location)) {
-           				if (organism.habitability>0) {
-           					habitability--;							
-						}
-           			}
-               		 if (control.listHerbivoresInTile(organism.location)>control.listCarnivoresInTile(organism.location)) {
-            				if (organism.habitability<2) {
-            					habitability++;							
- 						}
-            			}
-           		}
-               	 if (species=="Herbivore") {
-           			if (control.listCarnivoresInTile(organism.location)>control.listHerbivoresInTile(organism.location)) {
-           				if (organism.habitability>0) {
-           					habitability--;
-						}
-           			}
-           		}
-               	 organism.habitability=habitability;
-               	 
-      }
+         double habitability;
+         /////TEMPERATURE CHECK////////
+         if (temperature-2 < organism.preferredTemperature && 
+                    temperature+2 > organism.preferredTemperature){
+                  habitability=2;
+                }
+                else if (temperature-5 < organism.preferredTemperature && 
+                         temperature+5 > organism.preferredTemperature){
+                    habitability = 1.5;
+                }
+                else if (temperature-7 < organism.preferredTemperature && 
+                         temperature+7 > organism.preferredTemperature){
+                  habitability=1;
+                }
+                else if (temperature-10 < organism.preferredTemperature && 
+                         temperature+10 > organism.preferredTemperature){
+                    habitability = 0.5;
+                }
+                else{
+                  habitability=0;
+                }
+         ////////////////////////////////////////////////////////////////////
+         if (species=="Carnivore") {
+        	 if (control.listHerbivoresInTile(organism.location)<control.listCarnivoresInTile(organism.location)) {
+        		 if (organism.habitability>0) {
+        			 habitability=habitability+0.25;              
+        			 }
+        		 }
+        	 }
+         if (control.listHerbivoresInTile(organism.location)>control.listCarnivoresInTile(organism.location)) {
+        	 if (organism.habitability<2) {
+        		 habitability=habitability-0.25;            
+        		 }
+        	 }
+         if (species=="Herbivore") {
+        	 if (organism.habitability>0) {
+        		 habitability=habitability+0.25;
+                 }
+               }
+         if(control.listCarnivoresInTile(organism.location)>control.listHerbivoresInTile(organism.location)) {
+        	 if(organism.habitability<2) {
+        		 habitability=habitability-0.25;
+        		 }
+        	 }
+              organism.habitability=habitability;
+              }
+
      public void setLocation(int location, Organism organism){
     	 organism.location=location;
      }

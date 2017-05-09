@@ -100,45 +100,53 @@ public class Calc {
         return age;
      }
       */
-     public int getHabitability(int location,ObjectsControl control, Organism organism, ArrayList<Tile> tiles, String species){
+     public double getHabitability(int location,ObjectsControl control, Organism organism, ArrayList<Tile> tiles, String species){
     	 double temperature=tiles.get(location).getTemperature();
-    	 int nexthabitability;
+    	 double nexthabitability;
     	 if (temperature-2 < organism.preferredTemperature && 
                  temperature+2 > organism.preferredTemperature){
     		 nexthabitability=2;
              }
-             else if (temperature-10 < organism.preferredTemperature && 
-                      temperature+10 > organism.preferredTemperature){
-             	nexthabitability=1;
+             else if (temperature-5 < organism.preferredTemperature && 
+                      temperature+5 > organism.preferredTemperature){
+             	nexthabitability=1.5;
              }
+             else if (temperature-7 < organism.preferredTemperature && 
+                     temperature+7 > organism.preferredTemperature){
+            	nexthabitability=1;
+            }
+             else if (temperature-10 < organism.preferredTemperature && 
+                     temperature+10 > organism.preferredTemperature){
+            	nexthabitability=0.5;
+            }
              else{
              	nexthabitability=0;
              }
     	 if (species=="Carnivore") {
     		 if (control.listHerbivoresInTile(location)>control.listHerbivoresInTile(organism.location)) {
     			if (organism.habitability<2) {					
-    				nexthabitability++;
+    				nexthabitability=nexthabitability+0.25;
 				}
 			}
 		}
     	 if (species=="Carnivore") {
     		 if (control.listHerbivoresInTile(location)<control.listHerbivoresInTile(organism.location)) {
     			if (organism.habitability>0) {					
-    				nexthabitability--;
+    				nexthabitability=nexthabitability-0.25;
 				}
 			}
 		}
     	 if (species=="Herbivore") {
 			if (control.listCarnivoresInTile(location)>control.listCarnivoresInTile(organism.location)) {
 				if (organism.habitability>0) {
-					nexthabitability--;
+					nexthabitability=nexthabitability-0.25;
 				}
 			}
 		}
     	 if (species=="Herbivore") {
  			if (control.listCarnivoresInTile(location)<control.listCarnivoresInTile(organism.location)) {
  				if (organism.habitability<2) {
- 					nexthabitability++;
+ 					nexthabitability=nexthabitability+0.25; 
  				}
  			}
  		}

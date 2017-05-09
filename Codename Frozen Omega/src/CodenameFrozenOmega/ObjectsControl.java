@@ -3,6 +3,9 @@ package CodenameFrozenOmega;
 
 import java.util.ArrayList;
 
+
+import java.util.Iterator;
+
 public class ObjectsControl{
 	ArrayList<Carnivore> carnivore = new ArrayList<Carnivore>();
 	ArrayList<Herbivore> herbivore = new ArrayList<Herbivore>();
@@ -279,6 +282,7 @@ public class ObjectsControl{
 				}
 			}
 		}
+		
 		/*
 		 * if (n%k<0), left tile exists
 		 * if (n%k<k-1), right tile -
@@ -288,4 +292,34 @@ public class ObjectsControl{
 		
 		
 	}
-}
+    public void removeFromArray(ObjectsControl control, int location, int amount, String className){
+        int x = 0;
+        switch (className) {
+        case "Herbivore":  
+           Iterator<Herbivore> herb =herbivore.iterator();
+           while(x<=amount && herb.hasNext()){
+               
+               if (herb.next().location==location){
+                   x++;
+               herb.remove();
+               }
+        }
+
+        case "Carnivore":  
+             Iterator<Carnivore> carni = carnivore.iterator();
+                  while(x<=amount && carni.hasNext()){
+               
+               if (carni.next().location==location){
+                   x++;
+               carni.remove();
+               }
+        }
+   
+        case "Plant":  
+            Iterator<Plant> plants = plant.iterator();
+                    while(x<=amount && plants.hasNext()){
+               
+               if (plants.next().location==location){
+                   x++;
+               plants.remove();
+}}}}}

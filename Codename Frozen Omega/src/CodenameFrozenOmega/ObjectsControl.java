@@ -161,7 +161,7 @@ public class ObjectsControl{
 				}
 		}
 		if (newplants > plants && control.plant.size()<1000){
-			control.createObjects("Plant", "plant", (int)(newplants), 2,control.getHerbivore().get(i).preferredTemperature, i, (int)calc.setLife("Plant") , 0, 0, 0, true);
+			control.createObjects("Plant", "plant", (int)(newplants), 3,control.getHerbivore().get(i).preferredTemperature, i, (int)calc.setLife("Plant") , 0, 0, 0, true);
 		}
 		
 		if (newprey < prey){
@@ -180,7 +180,7 @@ public class ObjectsControl{
 				}
 			}
 		if(newpredator > predators && control.carnivore.size()<1000){
-			control.createObjects("Carnivore", "predator", (int)(newpredator), 2,control.getCarnivore().get(i).preferredTemperature, i, (int)calc.setLife("Carnivore") , 0, 0, 0, true);
+			control.createObjects("Carnivore", "predator", (int)(newpredator), 1,control.getCarnivore().get(i).preferredTemperature, i, (int)calc.setLife("Carnivore") , 0, 0, 0, true);
 			}
 		
 		if(newpredator == predators){

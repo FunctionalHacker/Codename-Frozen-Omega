@@ -68,7 +68,7 @@ public class Ticktick {
 		    	System.out.println("Temperature tile 2: "+(tiles.get(2).temperature));
 		    	System.out.println("Temperature tile 3: "+(tiles.get(3).temperature));
 		    	System.out.println();
-		    	System.out.println("Total: Herbivores: "+control.herbivore.size()+" Carn: "+control.carnivore.size()+" Plant: "+control.plant.size());
+		    	System.out.println("Total: Herbivores: "+control.herbivore.size()+" Carnivores: "+control.carnivore.size()+" Plant: "+control.plant.size());
 		    	System.out.println();
 		    	
 		    	//COUNTERS
